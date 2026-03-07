@@ -5,7 +5,6 @@
   --leaf: #2d8b57;
   --leaf-dark: #17653d;
   --bud: #ff7f98;
-  --petal: rgba(255, 172, 226, 0.9);
   --flower-core: #f28f3b;
   --paper: #fff9ef;
   --ink: #2a1c1a;
@@ -63,36 +62,44 @@ h1 {
 
 .garden {
   margin-top: 1.2rem;
-  min-height: 68vh;
+  min-height: clamp(430px, 66vh, 760px);
   border-radius: 1.2rem;
   position: relative;
   overflow: hidden;
+  padding: 1.3rem 0.9rem 1.8rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: 0.9rem;
+  row-gap: 1.5rem;
+  justify-items: center;
+  align-items: end;
+  align-content: space-evenly;
   background:
-    radial-gradient(circle at 15% 28%, rgba(255, 255, 255, 0.4) 0 12%, transparent 35%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.35) 0, transparent 45%),
-    linear-gradient(180deg, #a8d8af 0, #78c283 58%, #5da96b 100%);
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.34) 0 10%, transparent 34%),
+    radial-gradient(circle at 82% 28%, rgba(255, 255, 255, 0.22) 0 10%, transparent 38%),
+    linear-gradient(180deg, #b6d8a5 0, #80b983 44%, #5c8153 100%);
 }
 
 .garden::after {
-  content: "";
-  position: absolute;
-  inset: auto 0 0;
-  height: 22%;
-  background: linear-gradient(180deg, #5b402f 0, var(--soil) 100%);
-  z-index: 0;
+  content: none;
 }
 
 .bud {
-  position: absolute;
-  width: clamp(60px, 18vw, 88px);
-  height: clamp(180px, 36vw, 230px);
+  --petal-a: rgba(255, 205, 222, 0.82);
+  --petal-b: rgba(255, 173, 210, 0.68);
+  --core: #f29a4a;
+  position: relative;
+  width: clamp(76px, 22vw, 98px);
+  height: clamp(118px, 34vw, 150px);
   background: none;
   border: none;
   padding: 0;
   cursor: pointer;
   z-index: 1;
-  transform-origin: bottom center;
+  transform-origin: center;
+  transform: none;
   transition: transform 250ms ease;
+  align-self: end;
 }
 
 .bud:hover,
@@ -102,21 +109,14 @@ h1 {
 }
 
 .bud .stem {
-  position: absolute;
-  width: 8px;
-  height: 70%;
-  left: 50%;
-  bottom: 12%;
-  transform: translateX(-50%);
-  border-radius: 999px;
-  background: linear-gradient(180deg, var(--leaf), var(--leaf-dark));
+  display: none;
 }
 
 .bud .head {
   position: absolute;
-  width: 68%;
+  width: 74%;
   aspect-ratio: 1/1;
-  top: 8%;
+  top: 10%;
   left: 50%;
   transform: translateX(-50%);
   transition: transform 300ms ease;
@@ -133,24 +133,25 @@ h1 {
   width: 18px;
   height: 40px;
   border-radius: 50% / 60%;
-  background: rgba(255, 255, 255, 0.58);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: linear-gradient(180deg, var(--petal-a) 0%, var(--petal-b) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.26);
   opacity: 0;
   transform-origin: 50% 82%;
   transform: translate(-50%, -50%) rotate(0deg) translateY(-2px) scale(0.1);
 }
 
 .bud .core {
-  width: 18px;
-  height: 18px;
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
   background:
     radial-gradient(circle at 35% 35%, #ffd38f 0 26%, transparent 28%),
-    var(--flower-core);
+    var(--core);
   box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.18);
   opacity: 0;
   transform: translate(-50%, -50%) scale(0.4);
   z-index: 2;
+  margin: 13px 0px;
 }
 
 .bud:not(.bloomed) .petal:nth-child(1),
@@ -194,16 +195,11 @@ h1 {
   display: none;
 }
 
-.bud[data-memory="0"] { left: 5%; bottom: 5%; }
-.bud[data-memory="1"] { left: 26%; bottom: 1%; }
-.bud[data-memory="2"] { left: 50%; bottom: 5%; transform: translateX(-50%); }
-.bud[data-memory="3"] { left: 66%; bottom: 2%; }
-.bud[data-memory="4"] { left: 80%; bottom: 8%; }
-
-.bud[data-memory="2"]:hover,
-.bud[data-memory="2"]:focus-visible {
-  transform: translateX(-50%) translateY(-4px) scale(1.03);
-}
+.bud[data-memory="0"] { --petal-a: rgba(255, 214, 231, 0.8); --petal-b: rgba(255, 176, 213, 0.9); --core: #f39b4d; }
+.bud[data-memory="1"] { --petal-a: rgba(255, 225, 190, 0.8); --petal-b: rgba(255, 198, 133, 0.9); --core: #eb8b35; }
+.bud[data-memory="2"] { --petal-a: rgba(205, 233, 255, 0.8); --petal-b: rgba(161, 206, 245, 0.9); --core: #df7d3f; }
+.bud[data-memory="3"] { --petal-a: rgba(229, 214, 255, 0.8); --petal-b: rgba(200, 172, 242, 0.9); --core: #e38d43; }
+.bud[data-memory="4"] { --petal-a: rgba(208, 248, 213, 0.8); --petal-b: rgba(161, 228, 173, 0.9); --core: #e29447; }
 
 .modal {
   width: min(92vw, 420px);
@@ -295,6 +291,15 @@ h1 {
   }
 
   .garden {
-    min-height: 540px;
+    min-height: clamp(520px, 72vh, 860px);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: 1.6rem;
+    row-gap: 2rem;
+    padding: 1.8rem 1.3rem 2.1rem;
+  }
+
+  .bud {
+    width: clamp(82px, 10vw, 112px);
+    height: clamp(128px, 16vw, 168px);
   }
 }

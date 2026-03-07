@@ -6,14 +6,14 @@ const memories = [
     alt: "Mum and daughter during a shopping day"
   },
   {
-    title: "Poolside Laughs",
+    title: "Fun in the sun",
     message: "Sun, pool, and your laugh. My favorite combination.",
     image: "Images/Image-2021-Pool.jpg",
     alt: "Mum and daughter by a pool"
   },
   {
     title: "Beach Day",
-    message: "Every beach day with you feels like a tiny holiday in my heart.",
+    message: "I love this picture of us to much, along with the video of us dancing to gilmore girls. Our silly moments are always a lot of fun. <3",
     image: "Images/Image-2020-Beach.jpg",
     alt: "Mum and daughter at the beach"
   },
@@ -25,7 +25,7 @@ const memories = [
   },
   {
     title: "The Final Bloom",
-    message: "Happy Mother's Day, Mum. Thank you for every memory and every kind word. Love you always.",
+    message: "Happy Mother's Day, Mum. Thank you for every memory and every thing you do for all of us. Love you always.",
     image: "Images/Image-2011.jpg",
     alt: "A special mother and daughter photo"
   }
