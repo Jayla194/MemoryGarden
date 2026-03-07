@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memory Garden</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app">
+    <header class="hero">
+      <p class="eyebrow">Happy Mother's Day</p>
+      <h1>Memory Garden</h1>
+      <p class="intro">
+        Welcome to the memory garden.<br> Tap each bud to relive a little moment.<br> When a memory is seen, a flower blooms.
+      </p>
+      <p id="progress" class="progress" aria-live="polite">0/4 memories bloomed</p>
+    </header>
+
+    <section class="garden" aria-label="Interactive memory garden">
+      <button class="bud" data-memory="0" aria-label="Open memory one">
+        <span class="stem"></span>
+        <span class="head"></span>
+      </button>
+      <button class="bud" data-memory="1" aria-label="Open memory two">
+        <span class="stem"></span>
+        <span class="head"></span>
+      </button>
+      <button class="bud" data-memory="2" aria-label="Open memory three">
+        <span class="stem"></span>
+        <span class="head"></span>
+      </button>
+      <button class="bud" data-memory="3" aria-label="Open memory four">
+        <span class="stem"></span>
+        <span class="head"></span>
+      </button>
+      <button class="bud locked" data-memory="4" id="finalBud" aria-label="Locked final memory">
+        <span class="stem"></span>
+        <span class="head"></span>
+        <span class="lock-icon" aria-hidden="true">🔒</span>
+      </button>
+    </section>
+  </main>
+
+  <dialog id="memoryModal" class="modal">
+    <article class="card">
+      <button id="closeModal" class="close-btn" aria-label="Close memory card">✕</button>
+      <img id="memoryImage" src="" alt="">
+      <div class="card-content">
+        <h2 id="memoryTitle"></h2>
+        <p id="memoryMessage"></p>
+      </div>
+    </article>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>

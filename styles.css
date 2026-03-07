@@ -1,0 +1,300 @@
+:root {
+  --sky-top: #ffe3b8;
+  --sky-bottom: #ffd5c8;
+  --soil: #3d2a25;
+  --leaf: #2d8b57;
+  --leaf-dark: #17653d;
+  --bud: #ff7f98;
+  --petal: rgba(255, 172, 226, 0.9);
+  --flower-core: #f28f3b;
+  --paper: #fff9ef;
+  --ink: #2a1c1a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Nunito", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 20% 15%, #fff5df 0%, transparent 45%),
+    radial-gradient(circle at 80% 20%, #ffe9d7 0%, transparent 42%),
+    linear-gradient(180deg, var(--sky-top), var(--sky-bottom) 60%, #f5b7a6 100%);
+}
+
+.app {
+  width: min(760px, 100%);
+  margin: 0 auto;
+  padding: 1.2rem 1rem 2rem;
+}
+
+.hero {
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+h1 {
+  margin: 0.2rem 0;
+  font-family: "Fraunces", serif;
+  font-size: clamp(2rem, 8vw, 3.1rem);
+  line-height: 1.1;
+}
+
+.intro {
+  margin: 0.5rem auto 0;
+  max-width: 38ch;
+}
+
+.progress {
+  margin: 0.9rem auto 0;
+  font-weight: 700;
+}
+
+.garden {
+  margin-top: 1.2rem;
+  min-height: 68vh;
+  border-radius: 1.2rem;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 15% 28%, rgba(255, 255, 255, 0.4) 0 12%, transparent 35%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.35) 0, transparent 45%),
+    linear-gradient(180deg, #a8d8af 0, #78c283 58%, #5da96b 100%);
+}
+
+.garden::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 22%;
+  background: linear-gradient(180deg, #5b402f 0, var(--soil) 100%);
+  z-index: 0;
+}
+
+.bud {
+  position: absolute;
+  width: clamp(60px, 18vw, 88px);
+  height: clamp(180px, 36vw, 230px);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  z-index: 1;
+  transform-origin: bottom center;
+  transition: transform 250ms ease;
+}
+
+.bud:hover,
+.bud:focus-visible {
+  transform: translateY(-4px) scale(1.03);
+  outline: none;
+}
+
+.bud .stem {
+  position: absolute;
+  width: 8px;
+  height: 70%;
+  left: 50%;
+  bottom: 12%;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--leaf), var(--leaf-dark));
+}
+
+.bud .head {
+  position: absolute;
+  width: 68%;
+  aspect-ratio: 1/1;
+  top: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: transform 300ms ease;
+}
+
+.bud .petal,
+.bud .core {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
+
+.bud .petal {
+  width: 18px;
+  height: 40px;
+  border-radius: 50% / 60%;
+  background: rgba(255, 255, 255, 0.58);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  opacity: 0;
+  transform-origin: 50% 82%;
+  transform: translate(-50%, -50%) rotate(0deg) translateY(-2px) scale(0.1);
+}
+
+.bud .core {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 35%, #ffd38f 0 26%, transparent 28%),
+    var(--flower-core);
+  box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.18);
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.4);
+  z-index: 2;
+}
+
+.bud:not(.bloomed) .petal:nth-child(1),
+.bud:not(.bloomed) .petal:nth-child(2) {
+  opacity: 0.78;
+  transform: translate(-50%, -50%) rotate(20deg) translateY(-4px) scale(1);
+}
+
+.bud:not(.bloomed) .petal:nth-child(2) {
+  transform: translate(-50%, -50%) rotate(-20deg) translateY(-4px) scale(1);
+}
+
+.bud:not(.bloomed) .petal:nth-child(n + 3),
+.bud:not(.bloomed) .core {
+  opacity: 0;
+}
+
+.bud.bloomed .head {
+  transform: translateX(-50%) scale(1.1);
+}
+
+.bud.bloomed .petal {
+  animation: petal-ring-bloom 680ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation-delay: calc(var(--i) * 55ms);
+}
+
+.bud.bloomed .core {
+  animation: daisy-core-bloom 340ms ease-out 290ms forwards;
+}
+
+.lock-icon {
+  position: absolute;
+  top: 17%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.3rem;
+}
+
+.bud.unlocked .lock-icon,
+.bud.bloomed .lock-icon {
+  display: none;
+}
+
+.bud[data-memory="0"] { left: 5%; bottom: 5%; }
+.bud[data-memory="1"] { left: 26%; bottom: 1%; }
+.bud[data-memory="2"] { left: 50%; bottom: 5%; transform: translateX(-50%); }
+.bud[data-memory="3"] { left: 66%; bottom: 2%; }
+.bud[data-memory="4"] { left: 80%; bottom: 8%; }
+
+.bud[data-memory="2"]:hover,
+.bud[data-memory="2"]:focus-visible {
+  transform: translateX(-50%) translateY(-4px) scale(1.03);
+}
+
+.modal {
+  width: min(92vw, 420px);
+  border: none;
+  border-radius: 1rem;
+  padding: 0;
+  background: transparent;
+}
+
+.modal::backdrop {
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.card {
+  position: relative;
+  background: var(--paper);
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.3);
+}
+
+.close-btn {
+  position: absolute;
+  right: 0.45rem;
+  top: 0.45rem;
+  border: none;
+  background: rgba(255, 255, 255, 0.9);
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.card img {
+  width: 100%;
+  height: clamp(220px, 50vw, 300px);
+  object-fit: cover;
+  display: block;
+}
+
+.card-content {
+  padding: 0.9rem 1rem 1.1rem;
+}
+
+.card-content h2 {
+  margin: 0;
+  font-family: "Fraunces", serif;
+  font-size: 1.35rem;
+}
+
+.card-content p {
+  margin: 0.4rem 0 0;
+}
+
+@keyframes petal-ring-bloom {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(0deg) translateY(-4px) scale(0.15);
+  }
+  55% {
+    opacity: 0.82;
+    transform: translate(-50%, -50%) rotate(calc(var(--i) * 45deg - 8deg)) translateY(-19px) scale(1.04);
+  }
+  100% {
+    opacity: 0.72;
+    transform: translate(-50%, -50%) rotate(calc(var(--i) * 45deg)) translateY(-18px) scale(1);
+  }
+}
+
+@keyframes daisy-core-bloom {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.2);
+  }
+  70% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.08);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@media (min-width: 700px) {
+  .app {
+    padding-top: 1.8rem;
+  }
+
+  .garden {
+    min-height: 540px;
+  }
+}
