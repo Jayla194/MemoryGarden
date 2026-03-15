@@ -1,19 +1,19 @@
 const memories = [
   {
     title: "Shop Till We Drop",
-    message: "Shopping trips are always a highlight! Soon we will have another one of us to spend ungodly amounts in Primark. ",
+    message: "Shopping trips are always a highlight! Soon enough we’ll have a mini apprentice to teach the fine art of retail therapy to. ",
     image: "Images/Image-2022-Rushden.jpg",
     alt: "Mum and daughter during a shopping day at Rushden Lakes"
   },
   {
     title: "Fun in the sun",
-    message: "Heres your reminder if you don't hear it enough. You are amazing!! You're always there for us when we need help and ready to get shit done when it comes to it. Thank you <3",
+    message: "Here's your reminder if you don't hear it enough. You are amazing!! You’re always there when we need help, and you make things happen when it really counts. Thank you. <3",
     image: "Images/Image-2021-Pool.jpg",
     alt: "Mum and daughter by a pool"
   },
   {
     title: "My Partner in Crime",
-    message: "We always find ways to cause mischief somehow. I wanted to add the video of us dancing to gilmore girls but I can't find it.😭",
+    message: "We always find ways to cause mischief somehow. I wanted to add the video of us dancing to Gilmore Girls but I can't find it.😭",
     image: "Images/Image-2020-Beach.jpg",
     alt: "Mum and daughter at the beach"
   },
@@ -25,7 +25,7 @@ const memories = [
   },
   {
     title: "The Final Bloom",
-    message: "Happy Mother's Day, Mum. Thank you for every fun, silly memory and every thing you do for all of us. Love you always. <3",
+    message: "Happy Mother's Day, Mum. Thank you for every fun, silly memory and everything you do for all of us.No matter what, I hope you realize the impact you’ve had on us. You’ve raised two amazing kids so far... and no pressure on the next two. Love you always. <3",
     image: "Images/Image-2011.jpg",
     alt: "A special mother and daughter photo"
   }
