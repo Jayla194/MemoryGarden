@@ -59,6 +59,7 @@ const enterTeaBtn = document.getElementById("enterTea");
 const endingSection = document.getElementById("ending");
 const app = document.querySelector(".app");
 const carouselTrack = document.getElementById("carouselTrack");
+const backToGardenBtn = document.getElementById("backToGarden");
 
 const buds = [...document.querySelectorAll(".bud")];
 const finalBud = document.getElementById("finalBud");
@@ -176,12 +177,20 @@ function showEnding() {
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
+function showGarden() {
+  endingSection.classList.remove("is-visible");
+  endingSection.setAttribute("aria-hidden", "true");
+  app.classList.remove("is-hidden");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
 buds.forEach((bud) => {
   bud.addEventListener("click", handleBudClick);
 });
 
 closeModalBtn.addEventListener("click", closeMemory);
 enterTeaBtn.addEventListener("click", showEnding);
+backToGardenBtn.addEventListener("click", showGarden);
 
 modal.addEventListener("click", (event) => {
   const bounds = modal.getBoundingClientRect();
